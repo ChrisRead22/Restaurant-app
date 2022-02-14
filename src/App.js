@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import React, {useState,useEffect} from "react"
+import Product from "./Product";
 import './App.css';
 
 function App() {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:3000/products")
+    .then(r => r.json())
+    .then((productArray) => {
+      setProducts(productArray);
+    })
+  }, []);
+
+  function addProduct(newProduct) {
+    const updatedProductArray = [...products, newProduct];
+    setProducts(updatedProductArray);
+  }
+
+  function deleteProduct(id) {
+    const updatedProductArray = products.filter((product) => product.id !== id);
+    setProducts(updatedProductArray);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      products={products}
     </div>
   );
 }
