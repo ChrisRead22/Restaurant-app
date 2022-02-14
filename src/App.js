@@ -23,6 +23,17 @@ function App() {
     setProducts(updatedProductArray);
   }
 
+  function updateProduct(updatedProduct) {
+    const updatedProductArray = products.map((product) => {
+      if (product.id == updatedProduct.id) {
+        return updatedProduct;
+      } else {
+        return product;
+      }
+    });
+    setProducts(updatedProductArray);
+  }
+
   return (
     <div className="App">
       products={products}
