@@ -36,7 +36,10 @@ function App() {
 
   return (
     <div className="App">
-      products={products}
+      <h1>Restaurant Products</h1>
+      <Product
+     products={products}
+     />
     </div>
   );
 }
