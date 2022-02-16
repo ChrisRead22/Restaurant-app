@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react"
 import Product from "./Product";
-import {BrowserRouter as Router, Route} from "react-router-dom"
-import './App.css';
+// import {BrowserRouter as Router, Route} from "react-router-dom"
+
 
 function App() {
   const [products, setProducts] = useState([])
@@ -26,7 +26,7 @@ function App() {
 
   function updateProduct(updatedProduct) {
     const updatedProductArray = products.map((product) => {
-      if (product.id == updatedProduct.id) {
+      if (product.id === updatedProduct.id) {
         return updatedProduct;
       } else {
         return product;
@@ -37,20 +37,19 @@ function App() {
 
   return (
     <div className="App">
-     <Router>
+     {/* <Router> */}
        
 
-         <Route path="/Product" render={(props) => <Product
+          <Product
          products={products}
          addProduct={addProduct}
          deleteProduct={deleteProduct}
          updateProduct={updateProduct}
-         props={props}/>}>
-
-         </Route>
+        />
+       
 
        
-     </Router>
+     {/* </Router> */}
     </div>
   );
 }

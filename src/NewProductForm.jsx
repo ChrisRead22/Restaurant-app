@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from 'styled-components';
 
 function NewProductForm({addProduct}) {
     const [name, setName] = useState("");
@@ -21,6 +22,16 @@ function NewProductForm({addProduct}) {
         .then((r) => r.json())
         .then((newProduct) => addProduct(newProduct));
     }
+
+    const Button = styled.button`
+    color: white;
+    background: royalblue;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        background: red;
+    }
+  `;
 
     return (
         <div className="new-Product-form">

@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import styled from 'styled-components';
 
 const EditProductCard = ({updateProduct, id}) => {
     const [name, setName] = useState("");
@@ -25,6 +26,16 @@ const EditProductCard = ({updateProduct, id}) => {
         });
 
     }
+
+    const Button = styled.button`
+    color: white;
+    background: royalblue;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        background: red;
+    }
+  `;
 
     return(
         <div className="edit">
