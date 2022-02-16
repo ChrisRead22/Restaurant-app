@@ -1,5 +1,6 @@
 import React, {useState,useEffect} from "react"
 import Product from "./Product";
+import {BrowserRouter as Router, Route} from "react-router-dom"
 import './App.css';
 
 function App() {
@@ -36,10 +37,20 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Restaurant Products</h1>
-      <Product
-     products={products}
-     />
+     <Router>
+       
+
+         <Route path="/Product" render={(props) => <Product
+         products={products}
+         addProduct={addProduct}
+         deleteProduct={deleteProduct}
+         updateProduct={updateProduct}
+         props={props}/>}>
+
+         </Route>
+
+       
+     </Router>
     </div>
   );
 }
