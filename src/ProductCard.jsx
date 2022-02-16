@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import EditProductCard from './EditProductCard';
+import styled from 'styled-components';
 
 function ProductCard ({id, name, price, description, deleteProduct, updateProduct}) {
     const [updatedProduct, setUpdatedProduct] = useState(false);
@@ -16,6 +17,16 @@ function ProductCard ({id, name, price, description, deleteProduct, updateProduc
         setUpdatedProduct(!updateProduct)
     }
 
+    const Button = styled.button`
+    color: white;
+    background: royalblue;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        background: red;
+    }
+  `;
+
     return (
         <div>
             <div className="Product_card">
@@ -30,7 +41,7 @@ function ProductCard ({id, name, price, description, deleteProduct, updateProduc
             </span>
 
             {updatedProduct ? <EditProductCard updateProduct={updateProduct} id={id}/> : null}
-            
+
             </div>
         </div>
     );

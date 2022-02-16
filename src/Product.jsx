@@ -2,7 +2,7 @@ import React from "react";
 import ProductCard from './ProductCard';
 import NewProductForm from './NewProductForm';
 
-const Product = ({products, addProduct, deleteProduct, updateProduct={updateProduct},props}) => {
+const Product = ({products, addProduct, deleteProduct, updateProduct={updateProduct}}) => {
 
     const allProducts = products.map(product => {
         return <ProductCard
@@ -19,6 +19,9 @@ const Product = ({products, addProduct, deleteProduct, updateProduct={updateProd
 
     return (
         <div>
+         <NewProductForm addProduct={addProduct}/>
+         <br></br>
+        <h1>All Products</h1>
             {allProducts}
         </div>
     )
