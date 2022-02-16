@@ -1,7 +1,8 @@
 import React from "react";
-import ProductCard from './ProductCard'
+import ProductCard from './ProductCard';
+import NewProductForm from './NewProductForm';
 
-const Product = ({products, addProduct, deleteProduct, updateProduct}) => {
+const Product = ({products, addProduct, deleteProduct, updateProduct={updateProduct},props}) => {
 
     const allProducts = products.map(product => {
         return <ProductCard

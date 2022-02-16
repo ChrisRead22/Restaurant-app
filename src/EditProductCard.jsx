@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-function NewProductForm({addProduct}) {
+const EditProductCard = ({updateProduct, id}) => {
     const [name, setName] = useState("");
-    const [price, SetPrice] = useState("");
-    const [description, SetDescription] = useState("");
+    const [price, setPrice] = useState("");
+    const [description, setDescription] = useState("");
 
     function handleSubmit(event) {
         event.preventDefault();
-        fetch("http://localhost:3000/products", {
-            method: "POST",
+
+        fetch(`http://localhost:3000/products/${id}`, {
+            method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -19,12 +20,14 @@ function NewProductForm({addProduct}) {
             }),
         })
         .then((r) => r.json())
-        .then((newProduct) => addProduct(newProduct));
+        .then((updatedProduct) =>{
+            updateProduct(updatedProduct)
+        });
+
     }
 
-    return (
-        <div className="new-Product-form">
-            <h3>Create New Product</h3>
+    return(
+        <div className="edit">
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -36,27 +39,29 @@ function NewProductForm({addProduct}) {
                 <input
                     type="text"
                     name="price"
-                    placeholder="Product price"
+                    placeholder="Price"
                     value={price}
-                    onChange={(event) => SetPrice(event.target.value)}
+                    onChange={(event) => setPrice(event.target.value)}
                 />
                 <input
                     type="text"
                     name="description"
                     placeholder="Description"
                     value={description}
-                    onChange={(event) => SetDescription(event.target.value)}
+                    onChange={(event) => setDescription(event.target.value)}
                 />
-
-                <Button type="submit">Add Product</Button>
-
+                <Button type="submit">Submit</Button>
             </form>
-
         </div>
     );
+};
 
 
-}
 
 
-export default NewProductForm;
+
+
+
+
+
+export default EditProductCard;
